@@ -1,0 +1,121 @@
+﻿@model PageViewModel
+@*User/Create*@
+
+
+<partial name="../Partials/_UserPartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="container-fluid  p-2">
+
+        <div class=" col-lg-6 m-auto">
+            <div class="tile">
+                <h3 class="tile-title text-center">Create User</h3>
+                <form id="createUserForm" class="form-horizontal">
+
+                    <div class="tile-body">
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Employee ID</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="txtEmployeeId" placeholder="Enter Employee Id">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Fullname</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="txtFullname" placeholder="Enter Fullname">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Email</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="email" id="txtEmail" placeholder="Enter email address">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Role</label>
+                            <div class="col-md-8">
+                                <select id="ddlRole" class="form-control">
+                                    <option value="-1">Select Role</option>
+                                </select>
+                            </div>
+                            <script id="roleTemplate" type="html/template">
+                                <option value="-1">Select Role</option>
+                                {{#roles}}
+                                <option>{{name}}</option>
+                                {{/roles}}
+
+                            </script>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Subsidiary</label>
+                            <div class="col-md-8">
+                                <select id="ddlSubsidiary" class="form-control">
+                                    <option value="-1">Select Subsidiary</option>
+                                </select>
+                            </div>
+                            <script id="subsidiaryTemplate" type="html/template">
+                                <option value="-1">Select Subsidiary</option>
+                                {{#subsidiaries}}
+                                <option value="{{id}}">{{name}}</option>
+                                {{/subsidiaries}}
+
+                            </script>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Employee Type</label>
+                            <div class="col-md-8">
+                                <select id="ddlEmployeetype" class="form-control"></select>
+                            </div>
+                            <script id="employeetypeTemplate" type="html/template">
+                                <option value="-1">Select Employee Type</option>
+                                {{#employeetypes}}
+                                <option value="{{id}}">{{name}}</option>
+                                {{/employeetypes}}
+
+                            </script>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Gender</label>
+                            <div class="col-md-9">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="gender" value="M">Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="gender" value="F">Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Profile Image</label>
+                            <div class="col-md-8">
+                                <input id="file" class="form-control" type="file">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3  ml-auto text-right">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{ 
+<script src="~/js/scripts/user_create.js"></script>
+}
+

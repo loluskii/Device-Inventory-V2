@@ -1,0 +1,27 @@
+﻿
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-bell-o"></i> @Model.Title</h1>
+        <p>@Model.Description</p>
+    </div>
+    @*<ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        </ul>*@
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Index"?"active":"")" asp-controller="Visitor" asp-action="Index">Schedule</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "VisitorList"?"active":"") " asp-controller="Visitor" asp-action="VisitorList">Visitors</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Report"?"active":"")" asp-controller="Visitor" asp-action="Report">Report</a>
+        </li>
+       
+
+    </ul>
+</div>
+

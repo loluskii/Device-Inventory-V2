@@ -1,0 +1,32 @@
+﻿
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-user"></i> @Model.Title</h1>
+        <p>@Model.Description</p>
+    </div>
+    @*<ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        </ul>*@
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Index"?"active":"")" asp-controller="User" asp-action="Index">List</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Create"?"active":"") " asp-controller="User" asp-action="Create">Create</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "ResetPin"?"active":"")" asp-controller="User" asp-action="ResetPin">Reset Pin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Subsidiary"?"active":"")" asp-controller="User" asp-action="Subsidiary">Subsidiary</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "EmployeeType"?"active":"")" asp-controller="User" asp-action="EmployeeType">Employee Type</a>
+        </li>
+
+    </ul>
+</div>
+

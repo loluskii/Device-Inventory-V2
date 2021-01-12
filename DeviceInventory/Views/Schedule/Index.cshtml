@@ -1,0 +1,68 @@
+﻿@model PageViewModel
+@*Schedule/List*@
+
+<partial name="../Partials/_SchedulePartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <table class="table table-hover table-bordered table-striped" id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>FullName</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Expected Time</th>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTableBody"></tbody>
+                </table>
+                <script id="scheduleTableTemplate" type="html/template">
+                    {{#schedules}}
+                    <tr>
+                        <td>{{fullName}}</td>
+                        <td>{{email}}</td>
+                        <td>{{phoneNumber}}</td>
+                        <td>{{expectedTime}}</td>
+                        <td>{{dateString}}</td>
+                        <td>{{reason}}</td>
+                        <td>{{status}}</td>
+                        <td>
+                            <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+
+                            <button class="btn btn-danger " data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i>Delete</button>
+                        </td>
+                    </tr>
+                    {{/schedules}}
+
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="~/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/scripts/schedule_list.js"></script>
+    <script type="text/javascript">
+     
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
+
+
+}
+

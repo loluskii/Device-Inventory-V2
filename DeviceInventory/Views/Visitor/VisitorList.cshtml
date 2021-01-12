@@ -1,0 +1,94 @@
+﻿@model PageViewModel
+@*Visitor/VisitorList*@
+
+<partial name="../Partials/_VisitorPartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+
+            <div class="tile-body">
+                <div class="">
+                    <form class="form-inline">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Filter By</label>
+                        <select class="custom-select col my-1 mr-sm-2" id="ddlSelectStatus">
+                            <option selected value="-1">Status</option>
+                            <option value="CheckedIn">CheckedIn</option>
+                            <option value="CheckedOut">CheckedOut</option>
+                            <option value="PreScheduled">PreScheduled</option>
+                        </select>
+
+                    </form>
+                </div>
+                <hr />
+                <table class="table table-hover table-bordered table-striped" id="visitorsTable">
+                    <thead>
+                        <tr>
+                            <th>FullName</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Expected Time</th>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th>Host</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="visitorsTableBody">
+                       
+
+
+                    </tbody>
+
+                </table>
+            </div>
+            <script id="visitorsTableTemplate" type="html/template">
+                {{#visitors}}
+                <tr data-id={{id}}>
+                    <td>{{fullName}}</td>
+                    <td>{{email}}</td>
+                    <td>{{phoneNumber}}</td>
+                    <td>{{expectedTime}}</td>
+                    <td>{{dateString}}</td>
+                    <td>{{reason}}</td>
+                    <td>{{hostName}}</td>
+                    <td>{{status}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                        @*should not check in if the phone number is not present*@
+                        {{#checkedIn}}
+                        <button class="btn btn-warning btn-sm btnCheckOut" data-toggle="tooltip" data-placement="top" title="Print Barcode"><i class="fa fa-sign-out"></i> CheckOut </button>
+
+                        {{/checkedIn}}
+                        {{^checkedIn}}
+                        <button class="btn btn-info btn-sm btnCheckIn " data-toggle="tooltip" data-placement="top" title="Print Barcode"><i class="fa fa-sign-in"></i> CheckIn </button>
+                        {{/checkedIn}}
+                        <button class="btn btn-danger btn-sm " data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i>Delete</button>
+                    </td>
+                </tr>
+                {{/visitors}}
+            </script>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- Data table plugin-->
+
+    <script src="~/js/scripts/visitor_list.js"></script>
+    <script type="text/javascript">
+        $('#sampleTable').DataTable({
+            ordering: false
+        });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
+}
+

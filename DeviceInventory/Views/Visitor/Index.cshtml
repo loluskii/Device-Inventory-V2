@@ -1,0 +1,75 @@
+﻿@model PageViewModel
+@*Visitor/Schedule*@
+
+<partial name="../Partials/_VisitorPartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <table class="table table-hover table-bordered table-striped" id="visitorTable">
+                    <thead>
+                        <tr>
+                            <th>FullName</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Expected Time</th>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th>Host</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="schedulesTableBody">
+                      
+
+                    </tbody>
+                </table>
+            </div>
+            <script id="scheduledVisitorsTableTemplate" type="html/template">
+                {{#schedules}}
+                <tr data-id={{id}}>
+                    <td class="name">{{fullName}}</td>
+                    <td>{{email}}</td>
+                    <td>{{phoneNumber}}</td>
+                    <td>{{expectedTime}}</td>
+                    <td>{{dateString}}</td>
+                    <td>{{reason}}</td>
+                    <td>{{hostName}}</td>
+                    <td>
+                        <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+                        @*should not check in if the phone number is not present*@
+                        <button type="button" class="btn btn-info btnCheckIn" data-toggle="tooltip" data-placement="top" title="Check In"><i class="fa fa-sign-in"></i> CheckIn </button>
+                        <button class="btn btn-danger waves-effect btn-sm deleteMenuItem" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i>Delete</button>
+
+                        @*<button class="btn btn-danger " data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i>Delete</button>*@
+                    </td>
+                </tr>
+                {{/schedules}}
+            </script>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="~/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/scripts/visitor_schedule.js"></script>
+    <script type="text/javascript">
+    $('#sampleTable').DataTable({
+            ordering: false
+        });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
+   
+
+}
+

@@ -1,0 +1,15 @@
+﻿@model PageViewModel
+
+@{
+    if(Model.Area == "dashboard")
+    {
+        Layout = "_DashboardLayout";
+
+    }
+    else
+    {
+        Layout = "_Layout";
+
+    }
+
+}

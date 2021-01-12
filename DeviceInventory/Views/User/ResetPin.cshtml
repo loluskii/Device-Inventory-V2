@@ -1,0 +1,65 @@
+﻿@model PageViewModel
+@*User/Reset Pin*@
+
+
+<partial name="../Partials/_UserPartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="container-fluid  p-2">
+
+        <div class=" col-lg-6 m-auto">
+            <div class="tile">
+                <h3 class="tile-title text-center">Reset User Pin</h3>
+                <div class="tile-body">
+                    <form class="form-horizontal">
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Employee Id</label>
+                            <div class="col-md-8">
+                                <select  class="form-control employeeId">
+                                    <option value="-1">Select Employee Id</option>
+                                    <option value="0">AEE171673</option>
+                                    <option value="0">AEE173673</option>
+                                    <option value="0">TEE171673</option>
+                                    <option value="0">AFE171673</option>
+                                    <option value="0">AEE173473</option>
+                                    <option value="0">BEE171673</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Email</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" disabled placeholder="Email">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="tile-footer">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-3  ml-auto text-right">
+                            <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Reset</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            $('.employeeId').select2();
+        });
+    </script>
+}
+

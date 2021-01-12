@@ -1,0 +1,35 @@
+﻿
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-cog"></i> @Model.Title</h1>
+        <p>@Model.Description</p>
+    </div>
+    @*<ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        </ul>*@
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Index"?"active":"")" asp-controller="Device" asp-action="Index">List</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Create"?"active":"") " asp-controller="Device" asp-action="Create">Create</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "DeviceType"?"active":"")" asp-controller="Device" asp-action="DeviceType">Type</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "DeviceModel"?"active":"")" asp-controller="Device" asp-action="DeviceModel">Model </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "Color"?"active":"")" asp-controller="Device" asp-action="Color">Color</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(Model.Subtitle == "PropertyType"?"active":"")" asp-controller="Device" asp-action="PropertyType">Property Type</a>
+        </li>
+
+    </ul>
+</div>
+

@@ -1,0 +1,69 @@
+﻿@model PageViewModel
+@*Device*@
+
+<partial name="../Partials/_DevicePartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <table class="table table-hover table-bordered table-striped" id="deviceTable">
+                    <thead>
+                        <tr>
+                            <th>Staff Id</th>
+                            <th>Email</th>
+                            <th>Device Type</th>
+                            <th>Make</th>
+                            <th>Serial Number</th>
+                            <th>Color</th>
+                            <th>Property Type</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="deviceTableBody"></tbody>
+                </table>
+                <script id="deviceTableTemplate" type="html/template">
+                    {{#devices}}
+                    <tr>
+                        <td>{{employeeId}}</td>
+                        <td>{{email}}</td>
+                        <td>{{deviceTypeName}}</td>
+                        <td>{{deviceModelName}}</td>
+                        <td>{{serialNumber}}</td>
+                        <td>{{deviceColorName}}</td>
+                        <td>{{propertyTypeName}}</td>
+                        <td>
+                            <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Print Barcode"><i class="fa fa-print"></i></button>
+                            <button class="btn btn-danger " data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    {{/devices}}
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="~/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/scripts/device_list.js"></script>
+
+    <script type="text/javascript">
+      
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+  
+
+
+}
+

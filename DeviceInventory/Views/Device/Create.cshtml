@@ -1,0 +1,143 @@
+﻿@model PageViewModel
+@*Device/Create*@
+
+
+<partial name="../Partials/_DevicePartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="container-fluid  p-2">
+
+        <div class=" col-lg-6 m-auto">
+            <div id="createDeviceTile" class="tile">
+                <h3 class="tile-title text-center">Create User</h3>
+                <form id="createDeviceForm" class="form-horizontal">
+                    <div class="tile-body">
+
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Employee Id</label>
+                            <div class="col-md-8">
+                                <select id="ddlEmployeeId" class="form-control employeeId"></select>
+
+                            </div>
+                            <script id="employeeIdTemplate" type="html/template">
+                                {{#employeeids}}
+                                <option value="-1">Select Employee Id</option>
+                                <option value={{id}}>{{employeeId}}</option>
+                                {{/employeeids}}
+                            </script>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Email</label>
+                            <div class="col-md-8">
+                                <input id="txtEmail" class="form-control" type="email" disabled placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Device Type</label>
+                            <div class="col-md-8">
+                                <select id="ddlDeviceType" class="form-control"></select>
+                            </div>
+                            <script id="deviceTypeTemplate" type="html/template">
+                                {{#devicetypes}}
+                                <option value="-1">Select Device Type</option>
+                                <option value={{id}}>{{name}}</option>
+                                {{/devicetypes}}
+                            </script>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Device Make</label>
+                            <div class="col-md-8">
+                                <select id="ddlDeviceModel" class="form-control"></select>
+                            </div>
+                            <script id="deviceModelTemplate" type="html/template">
+                                {{#devicemodels}}
+                                <option value="-1">Select Device Model</option>
+                                <option value={{id}}>{{name}}</option>
+                                {{/devicemodels}}
+                            </script>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Serial Number</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="txtSerialNumber" type="text" placeholder="Enter Device Serial Number">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Property Type</label>
+                            <div class="col-md-8">
+                                <select id="ddlDevicePropertyType" class="form-control"></select>
+                            </div>
+                            <script id="devicePropertyTypeTemplate" type="html/template">
+                                {{#propertytypes}}
+                                <option value="-1">Select Device Property Type</option>
+                                <option value={{id}}>{{name}}</option>
+                                {{/propertytypes}}
+                            </script>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Color</label>
+                            <div class="col-md-8">
+                                <select id="ddlDeviceColor" class="form-control"></select>
+                            </div>
+                            <script id="deviceColorTemplate" type="html/template">
+                                {{#devicecolors}}
+                                <option value="-1">Select Device Color</option>
+                                <option value={{id}}>{{name}}</option>
+                                {{/devicecolors}}
+                            </script>
+                        </div>
+
+
+                    </div>
+                    <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3  ml-auto text-right">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div  id="barcodeDiv" class="container-fluid bg-primary d-none">
+                <h4>Barcode</h4>
+                <div class="col text-center p-2">
+                    <svg class="m-auto" id="barcode"></svg>
+                </div>
+                <button id="btnPrint" class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-print"></i>Print Barcode</button>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+@section Scripts{
+    <script src="~/js/JsBarcode.all.min.js"></script>
+    <script src="~/js/plugins/jQuery.print.min.js"></script>
+    <script src="~/js/scripts/device_create.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#btnPrint").on("click", function () {
+                $.print("#barcode");
+            })
+
+            $('.employeeId').select2();
+            $("#txtSerialNumber").on("change", function () {
+                JsBarcode("#barcode", $(this).val(), {
+                    format: "code128",
+                    lineColor: "#222",
+
+                    height: 40,
+                    displayValue: true
+                });
+            })
+        });
+    </script>
+}
+

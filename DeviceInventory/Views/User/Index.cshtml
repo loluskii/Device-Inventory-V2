@@ -1,0 +1,72 @@
+﻿@model PageViewModel
+@*User*@
+
+<partial name="../Partials/_UserPartial.cshtml" model="Model" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <table class="table table-hover table-bordered table-striped" id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Staff Id</th>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Subsidiary</th>
+                            <th>JobType</th>
+                            <th>Gender</th>
+                            <th>isActive</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="userTbody">
+                      
+
+
+                    </tbody>
+                </table>
+                <script id="userTableTemplate" type="text/template">
+                    {{#users}}
+                    <tr>
+                        <td>{{employeeId}}</td>
+                        <td>{{fullName}}</td>
+                        <td>{{email}}</td>
+                        <td>{{subsidiaryName}}</td>
+                        <td>{{employeeTypeName}}</td>
+                        <td>{{gender}}</td>
+                        <td>{{isActive}}</td>
+                        <td>
+                            <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Suspend"><i class="fa fa-times-circle"></i></button>
+                            <button class="btn btn-danger " data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    {{/users}}
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="~/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/scripts/user_list.js"></script>
+    <script type="text/javascript">
+    //$('#sampleTable').DataTable({
+    //        ordering: false
+    //    });
+    $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+
+   
+
+}
+

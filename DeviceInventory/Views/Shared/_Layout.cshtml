@@ -1,0 +1,42 @@
+﻿@model PageViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Telnet Inventory - @Model.Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="~/js/scripts/common/guestRouth.js"></script>
+
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <!-- Essential javascripts for application to work-->
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- axios library -->
+    <script src="~/js/plugins/axios.min.js"></script>
+
+    <!-- Mustache template engine -->
+    <script src="~/js/plugins/mustache.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="~/js/plugins/pace.min.js"></script>
+    <!--Bootstrap notify-->
+    <script src="~/js/plugins/bootstrap-notify.min.js"></script>
+    <!-- Jquery Validation-->
+    <script src="~/js/plugins/jquery.validate.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
